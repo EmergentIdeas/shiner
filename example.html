@@ -1,0 +1,112 @@
+<html>
+	<head>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="shiner.js"></script>
+		<style type="text/css">
+			.holder {
+				position: relative;
+				height: 300px;
+				width: 300px;
+			}		
+			
+			.holder2 {
+				position: relative;
+				height: 215px;
+				width: 300px;
+				overflow: hidden;
+			}
+			
+			.group1 {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.group2 {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				width: 100%;
+				max-width: 100%;
+			}
+			
+			.blue {
+				background-color: blue;
+			}
+			
+			.yellow {
+				background-color: yellow;
+			}
+			
+			.red {
+				background-color: red;
+			}
+			
+			.box {
+				background: transparent;
+				border: black solid 4px;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				width: 292px;
+				height: 292px;
+			}
+			
+			.box2 {
+				background: transparent;
+				border: black solid 4px;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				width: 292px;
+				height: 207px;
+			}
+			
+			
+			.trans-spec {
+				-moz-transition: opacity 4s;
+				-webkit-transition: opacity 4s;
+				-o-transition: opacity 4s;
+				transition: opacity 4s;
+			}
+			
+			.fast {
+				-moz-transition: opacity .2s;
+				-webkit-transition: opacity .2s;
+				-o-transition: opacity .2s;
+				transition: opacity .2s;
+			}
+		</style>	
+	</head>
+
+<body>
+	<div class="holder">
+		<div class="slideshow" >
+			<div id="one" class="group1 blue">&nbsp;</div>
+			<div id="two" class="group1 yellow">&nbsp;</div>
+			<div id="three" class="group1 red">&nbsp;</div>
+		
+		</div>
+	<div class="box">&nbsp;</div>
+	</div>
+	
+	<br/>
+	<div class="holder2">
+		<div class="slideshow2" >
+			<img src="http://cdn7.mixrmedia.com/wp-uploads/rekuru/blog/2010/12/cats_012.jpg" class="group2"/>
+			<img src="http://www.coolanimalworld.com/wp-content/uploads/2012/07/A-variety-of-cute-cats-sleeping-postures-29.jpg" class="group2"/>
+			<img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSX3aXC2vTmlJ9gPCZFYcsvCx8UIAeETVOKECX9EOE_6dryntOw" class="group2"/>
+		
+		</div>
+	<div class="box2">&nbsp;</div>
+	</div>
+
+<script type="text/javascript">
+	$('.slideshow .group1').shiner({ transClass: 'fast', delay: 4000});
+	$('.slideshow2 .group2').shiner();
+</script>
+</body>
+
+</html>
