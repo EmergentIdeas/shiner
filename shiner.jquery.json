@@ -6,7 +6,7 @@
         "slideshow",
         "crossfade"
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": {
         "name": "Dan Kolz @ Emergent Ideas",
         "url": "https://github.com/EmergentIdeas/shiner"
@@ -27,7 +27,7 @@
     "bugs": "https://github.com/EmergentIdeas/shiner/issues",
     "homepage": "https://github.com/EmergentIdeas/shiner",
     "docs": "https://github.com/EmergentIdeas/shiner",
-    "download": "://github.com/EmergentIdeas/shiner/archive/v1.0.0.zip",
+    "download": "://github.com/EmergentIdeas/shiner/archive/v1.0.1.zip",
     "dependencies": {
         "jquery": ">=1.5"
     }
