@@ -35,7 +35,9 @@ their limited processing power (unlike other slide show tools I've tried).
 	
 	var defaults = {
 			transClass: "trans-spec",		/* The class to apply to set the transition properties */
-			delay: 5000 					/* The delay between the changes in slides */
+			delay: 5000, 					/* The delay between the changes in slides */
+			visibleZIndex: 1,
+			invisibleZIndex: 0
 	};
 	
 	var slideSetInformation = {};
@@ -74,7 +76,7 @@ their limited processing power (unlike other slide show tools I've tried).
 	 * make the slide visible either by making it opaque if that's supported in the browser or
 	 * making it not hidden
 	 */
-	function makeVisible(slide) {
+	function makeVisible(slide, options) {
 		if(cssTransitionSupport) {
 			slide.css('opacity', 1);
 		}
@@ -85,14 +87,14 @@ their limited processing power (unlike other slide show tools I've tried).
 			}
 			slide.css('display', oldvalue);
 		}
-		
+		slide.css('z-index', options.visibleZIndex);
 	}
 	
 	/**
 	 * make the slide invisible either by making it transparent if that's supported in the browser or
 	 * making it hidden
 	 */
-	function makeInvisible(slide) {
+	function makeInvisible(slide, options) {
 		if(cssTransitionSupport) {
 			slide.css('opacity', 0);
 		}
@@ -103,6 +105,7 @@ their limited processing power (unlike other slide show tools I've tried).
 			}
 			slide.css('display', 'none');
 		}
+		slide.css('z-index', options.invisibleZIndex);
 	}
 	
 	/**
@@ -127,13 +130,13 @@ their limited processing power (unlike other slide show tools I've tried).
 		slides.each(function() {
 			var slide = $(this);
 			if(isVisible(slide)) {
-				makeInvisible(slide);
+				makeInvisible(slide, slideSetInformation[slidesSelector]);
 				last = true;
 			}
 			else {
 				if(last == true) {
 					last = false;
-					makeVisible(slide);
+					makeVisible(slide, slideSetInformation[slidesSelector]);
 				}
 			}
 			
@@ -141,7 +144,7 @@ their limited processing power (unlike other slide show tools I've tried).
 		
 		if(last) {
 			// meaning the one we made transparent was the last one
-			makeVisible(slides.first());
+			makeVisible(slides.first(), slideSetInformation[slidesSelector]);
 		}
 	}
 	
@@ -171,9 +174,12 @@ their limited processing power (unlike other slide show tools I've tried).
 		var slides = $(slidesSelector);
 		
 		slideSetInformation[slidesSelector] = $.extend({}, defaults, options);
+		options = slideSetInformation[slidesSelector];
 		
-		slides.each(function() { makeInvisible($(this)); } );
-		makeVisible(slides.first());
+		slides.each(function() { 
+			makeInvisible($(this), options); 
+		} );
+		makeVisible(slides.first(), options);
 		
 		setTimeout(function() {
 			slides.addClass(slideSetInformation[slidesSelector].transClass);
